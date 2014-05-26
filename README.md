@@ -18,7 +18,8 @@ There is only one service endpoint, that mentions the latest version of the app:
 ```json
 {
     "version": "3.4.0",
-    "dl_url": "http://www.example.com/app-version.tgz"
+    "dl_url": "http://www.example.com/app-version.tgz",
+    "least_version_required": "3.3"
 }
 ```
 
