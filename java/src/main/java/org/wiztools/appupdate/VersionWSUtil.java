@@ -24,10 +24,13 @@ public final class VersionWSUtil {
         try(InputStream is = con.getInputStream();) {
             JsonReader rdr = Json.createReader(is);
             JsonObject obj = rdr.readObject();
+            
             Version version = new VersionImpl(obj.getJsonString("version").getString());
             String dlUrl = obj.getJsonString("dl_url").getString();
+            Version leastVersionRequired = new VersionImpl(
+                    obj.getJsonString("least_version_required").getString());
             
-            return new VersionUrlImpl(version, dlUrl);
+            return new VersionUrlImpl(version, dlUrl, leastVersionRequired);
         }
     }
     

@@ -59,12 +59,38 @@ public class VersionImpl implements Version {
 
     @Override
     public boolean isLessThan(Version v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(this.getMajor() < v.getMajor()) {
+            return true;
+        }
+        else if(this.getMajor() == v.getMajor()) {
+            if(this.getMinor() < v.getMinor()) {
+                return true;
+            }
+            else if(this.getMinor() == v.getMinor()) {
+                if(this.getPatch() < v.getPatch()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean isGreaterThan(Version v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(this.getMajor() > v.getMajor()) {
+            return true;
+        }
+        else if(this.getMajor() == v.getMajor()) {
+            if(this.getMinor() > v.getMinor()) {
+                return true;
+            }
+            else if(this.getMinor() == v.getMinor()) {
+                if(this.getPatch() > v.getPatch()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
 }
