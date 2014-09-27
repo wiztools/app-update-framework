@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 /**
  *
@@ -22,15 +19,7 @@ public final class VersionWSUtil {
         con.addRequestProperty("Accept", "application/json");
         con.connect();
         try(InputStream is = con.getInputStream();) {
-            JsonReader rdr = Json.createReader(is);
-            JsonObject obj = rdr.readObject();
-            
-            Version version = new VersionImpl(obj.getJsonString("version").getString());
-            String dlUrl = obj.getJsonString("dl_url").getString();
-            Version leastVersionRequired = new VersionImpl(
-                    obj.getJsonString("least_version_required").getString());
-            
-            return new VersionUrlImpl(version, dlUrl, leastVersionRequired);
+            return JsonConvert.getVersionUrl(is);
         }
     }
     
