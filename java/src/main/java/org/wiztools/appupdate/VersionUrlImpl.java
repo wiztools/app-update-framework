@@ -8,13 +8,24 @@ import java.util.Objects;
  */
 public class VersionUrlImpl implements VersionUrl {
     
-    private final Version version;
-    private final String url;
-    private final Version leastVersionRequired;
+    private Version version;
+    private String url;
+    private String releaseNotesUrl;
+    private Version leastVersionRequired;
 
-    public VersionUrlImpl(Version version, String url, Version leastVersionRequired) {
+    public void setVersion(Version version) {
         this.version = version;
+    }
+
+    public void setUrl(String url) {
         this.url = url;
+    }
+
+    public void setReleaseNotesUrl(String releaseNotesUrl) {
+        this.releaseNotesUrl = releaseNotesUrl;
+    }
+
+    public void setLeastVersionRequired(Version leastVersionRequired) {
         this.leastVersionRequired = leastVersionRequired;
     }
 
@@ -26,6 +37,11 @@ public class VersionUrlImpl implements VersionUrl {
     @Override
     public String getUrl() {
         return url;
+    }
+
+    @Override
+    public String getReleaseNotesUrl() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

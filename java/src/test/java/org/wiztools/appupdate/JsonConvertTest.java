@@ -43,10 +43,11 @@ public class JsonConvertTest {
         System.out.println("getVersionUrl");
         Reader is = new FileReader("src/test/resources/file.json");
         JsonConvert instance = new JsonConvert();
-        VersionUrl expResult = new VersionUrlImpl(
-                new VersionImpl("3.4.0"),
-                "http://www.example.com/app-version.tgz",
-                new VersionImpl("3.3"));
+        VersionUrlImpl expResult = new VersionUrlImpl();
+        expResult.setVersion(new VersionImpl("3.4.0"));
+        expResult.setUrl("http://www.example.com/app-version.tgz");
+        expResult.setReleaseNotesUrl("http://www.example.com/release-version.txt");
+        expResult.setLeastVersionRequired(new VersionImpl("3.3"));
         VersionUrl result = instance.getVersionUrl(is);
         assertEquals(expResult, result);
     }

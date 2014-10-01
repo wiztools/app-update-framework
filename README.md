@@ -19,6 +19,7 @@ There is only one service endpoint, that mentions the latest version of the app:
 {
     "version": "3.4.0",
     "dl_url": "http://www.example.com/app-version.tgz",
+    "release_notes_url": "http://www.example.com/release-version.txt",
     "least_version_required": "3.3"
 }
 ```

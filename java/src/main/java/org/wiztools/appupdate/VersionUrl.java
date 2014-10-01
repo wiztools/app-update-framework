@@ -7,5 +7,6 @@ package org.wiztools.appupdate;
 public interface VersionUrl {
     Version getVersion();
     String getUrl();
+    String getReleaseNotesUrl();
     Version getLeastVersionRequired();
 }
