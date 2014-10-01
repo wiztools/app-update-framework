@@ -1,0 +1,6 @@
+{
+    "version": "3.4.0",
+    "dl_url": "http://www.example.com/app-version.tgz",
+    "least_version_required": "3.3"
+}
+

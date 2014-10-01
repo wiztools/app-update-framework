@@ -19,7 +19,7 @@ public final class VersionWSUtil {
         con.addRequestProperty("Accept", "application/json");
         con.connect();
         try(InputStream is = con.getInputStream();) {
-            return JsonConvert.getVersionUrl(is);
+            return new JsonConvert().getVersionUrl(is);
         }
     }
     

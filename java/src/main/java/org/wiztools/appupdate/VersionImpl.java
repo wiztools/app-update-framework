@@ -1,5 +1,6 @@
 package org.wiztools.appupdate;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,11 +12,13 @@ public class VersionImpl implements Version {
     
     private static final String regex = "^([0-9]+)(\\.([0-9]+))?(\\.([0-9]+))?$";
     
+    private final String stringRepresentation;
     private final int major;
     private final int minor;
     private final int patch;
     
     public VersionImpl(String vStr) {
+        stringRepresentation = vStr;
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(vStr);
         if(m.matches()) {
@@ -40,6 +43,11 @@ public class VersionImpl implements Version {
         else {
             throw new IllegalArgumentException("Invalid version string: " + vStr);
         }
+    }
+    
+    @Override
+    public String toString() {
+        return stringRepresentation;
     }
 
     @Override
@@ -91,6 +99,40 @@ public class VersionImpl implements Version {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.stringRepresentation);
+        hash = 97 * hash + this.major;
+        hash = 97 * hash + this.minor;
+        hash = 97 * hash + this.patch;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final VersionImpl other = (VersionImpl) obj;
+        if (!Objects.equals(this.stringRepresentation, other.stringRepresentation)) {
+            return false;
+        }
+        if (this.major != other.major) {
+            return false;
+        }
+        if (this.minor != other.minor) {
+            return false;
+        }
+        if (this.patch != other.patch) {
+            return false;
+        }
+        return true;
     }
     
 }
