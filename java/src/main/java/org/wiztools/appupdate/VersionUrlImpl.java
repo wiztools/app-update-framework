@@ -9,7 +9,7 @@ import java.util.Objects;
 public class VersionUrlImpl implements VersionUrl {
     
     private Version version;
-    private String url;
+    private String dlUrl;
     private String releaseNotesUrl;
     private Version leastVersionRequired;
 
@@ -18,7 +18,7 @@ public class VersionUrlImpl implements VersionUrl {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.dlUrl = url;
     }
 
     public void setReleaseNotesUrl(String releaseNotesUrl) {
@@ -35,13 +35,13 @@ public class VersionUrlImpl implements VersionUrl {
     }
 
     @Override
-    public String getUrl() {
-        return url;
+    public String getDlUrl() {
+        return dlUrl;
     }
 
     @Override
     public String getReleaseNotesUrl() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return releaseNotesUrl;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class VersionUrlImpl implements VersionUrl {
     public int hashCode() {
         int hash = 7;
         hash = 83 * hash + Objects.hashCode(this.version);
-        hash = 83 * hash + Objects.hashCode(this.url);
+        hash = 83 * hash + Objects.hashCode(this.dlUrl);
         hash = 83 * hash + Objects.hashCode(this.leastVersionRequired);
         return hash;
     }
@@ -70,7 +70,7 @@ public class VersionUrlImpl implements VersionUrl {
         if (!Objects.equals(this.version, other.version)) {
             return false;
         }
-        if (!Objects.equals(this.url, other.url)) {
+        if (!Objects.equals(this.dlUrl, other.dlUrl)) {
             return false;
         }
         if (!Objects.equals(this.leastVersionRequired, other.leastVersionRequired)) {
