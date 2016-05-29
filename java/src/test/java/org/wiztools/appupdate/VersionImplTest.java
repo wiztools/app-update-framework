@@ -93,5 +93,72 @@ public class VersionImplTest {
         boolean result = instance.isGreaterThan(v);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of isLessThanOrEqual method, of class VersionImpl.
+     */
+    @Test
+    public void testIsLessThanOrEqual() {
+        System.out.println("isLessThanOrEqual");
+        Version v = new VersionImpl("2.3");
+        VersionImpl instance = new VersionImpl("2.3");
+        boolean expResult = true;
+        boolean result = instance.isLessThanOrEqual(v);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isGreaterThanOrEqual method, of class VersionImpl.
+     */
+    @Test
+    public void testIsGreaterThanOrEqual() {
+        System.out.println("isGreaterThanOrEqual");
+        Version v = new VersionImpl("2.3");
+        VersionImpl instance = new VersionImpl("2.3");
+        boolean expResult = true;
+        boolean result = instance.isGreaterThanOrEqual(v);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isWithin method, of class VersionImpl.
+     */
+    @Test
+    public void testIsWithin() {
+        System.out.println("isWithin");
+        Version min = new VersionImpl("1.0");
+        Version max = new VersionImpl("2.0");
+        VersionImpl instance = new VersionImpl("1.0");
+        boolean expResult = true;
+        boolean result = instance.isWithin(min, max);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isBetween method, of class VersionImpl.
+     */
+    @Test
+    public void testIsBetween() {
+        System.out.println("isBetween");
+        Version min = new VersionImpl("1.0");
+        Version max = new VersionImpl("2.0");
+        VersionImpl instance = new VersionImpl("1.0");
+        boolean expResult = false;
+        boolean result = instance.isBetween(min, max);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of equals method, of class VersionImpl.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Object obj = new VersionImpl("1.0");
+        VersionImpl instance = new VersionImpl("1.0");
+        boolean expResult = true;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+    }
     
 }

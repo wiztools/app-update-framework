@@ -100,6 +100,26 @@ public class VersionImpl implements Version {
         }
         return false;
     }
+    
+    @Override
+    public boolean isLessThanOrEqual(Version v) {
+        return isLessThan(v) || equals(v);
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Version v) {
+        return isGreaterThan(v) || equals(v);
+    }
+
+    @Override
+    public boolean isWithin(Version min, Version max) {
+        return isGreaterThanOrEqual(min) && isLessThanOrEqual(max);
+    }
+
+    @Override
+    public boolean isBetween(Version min, Version max) {
+        return isGreaterThan(min) && isLessThan(max);
+    }
 
     @Override
     public int hashCode() {
@@ -134,5 +154,4 @@ public class VersionImpl implements Version {
         }
         return true;
     }
-    
 }
